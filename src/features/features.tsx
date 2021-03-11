@@ -7,6 +7,7 @@ import CompressionFeature, { CompressionUi } from './src/compressionFeature'
 import PhotoMontageFeature, { PhotoMontageUi } from './src/photoMontage'
 import ConcatFeature, { ConcatUi } from './src/concatFeature'
 import AspectRatioFeature, { AspectRatioUi } from './src/aspectRatioFeature'
+import ChangeSpeedFeature, { ChangeSpeedUi } from './src/changeSpeedFeature'
 import TrimFeature, { TrimUi } from './src/trimFeature'
 
 // Custom Run Feature
@@ -31,6 +32,7 @@ export type Feature =
   | typeof RunFeature
   | typeof TrimFeature
   | typeof CombinedExecFeature
+  | typeof ChangeSpeedFeature
 
 export type FeatureElement = {
   name: string
@@ -75,6 +77,13 @@ const FEATURES: Features = {
     description: 'Combine multiple videos',
     feature: ConcatFeature,
     ui: <ConcatUi />
+  },
+
+  CHANGESPEED: {
+    name: 'Change-Speed',
+    description: 'Change video speed',
+    feature: ChangeSpeedFeature,
+    ui: <ChangeSpeedUi parents={['SPEED']} />
   },
 
   ASPECT_RATIO: {
