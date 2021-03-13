@@ -49,6 +49,7 @@ class ChangeVolumeFeature extends FFmpegFeature {
    * @param volumeValue: The volume value chosen on the slider
    */
   private changeVolumeCommand = (volumeValue: number): string => {
+    // Command from https://trac.ffmpeg.org/wiki/AudioVolume
     const decimalVolume = volumeValue / 100
     const finalVolumeValue = `-af 'volume=${decimalVolume}'`
     return finalVolumeValue
