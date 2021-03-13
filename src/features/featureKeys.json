@@ -6,6 +6,7 @@
   "CONCAT": true,
   "GREYSCALE": true,
   "ASPECT_RATIO": true,
+  "CHANGE_VOLUME": true,
   "CUSTOM_RUN": true,
   "TRIM": true,
   "MUTE": true

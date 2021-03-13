@@ -8,6 +8,7 @@ import PhotoMontageFeature, { PhotoMontageUi } from './src/photoMontage'
 import ConcatFeature, { ConcatUi } from './src/concatFeature'
 import AspectRatioFeature, { AspectRatioUi } from './src/aspectRatioFeature'
 import TrimFeature, { TrimUi } from './src/trimFeature'
+import ChangeVolumeFeature, { ChangeVolumeUi } from './src/changeVolumeFeature'
 
 // Custom Run Feature
 
@@ -31,6 +32,7 @@ export type Feature =
   | typeof RunFeature
   | typeof TrimFeature
   | typeof CombinedExecFeature
+  | typeof ChangeVolumeFeature
 
 export type FeatureElement = {
   name: string
@@ -82,6 +84,13 @@ const FEATURES: Features = {
     description: 'Change the aspect ratio for the video',
     feature: AspectRatioFeature,
     ui: <AspectRatioUi parents={['ASPECT_RATIO']} />
+  },
+
+  CHANGE_VOLUME: {
+    name: 'Change-Volume',
+    description: 'Change the volume for the video',
+    feature: ChangeVolumeFeature,
+    ui: <ChangeVolumeUi parents={['CHANGE_VOLUME']} />
   },
 
   CUSTOM_RUN: {

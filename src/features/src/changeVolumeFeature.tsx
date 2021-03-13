@@ -24,7 +24,9 @@ class ChangeVolumeFeature extends FFmpegFeature {
 
   parseConfiguration = () => {
     const { VOLUME } = this.configuration
-    return { volumeValue: VOLUME.value }
+    const { VALUE } = this.configuration
+    console.warn('IMPORTANT!!!! ', VOLUME, 'rgt', VALUE)
+    return { volumeValue: VALUE }
   }
 
   setFFmpegCommands(command: string) {
@@ -48,7 +50,8 @@ class ChangeVolumeFeature extends FFmpegFeature {
    * @param volumeValue: The volume value chosen on the slider
    */
   private changeVolumeCommand = (volumeValue: number): string => {
-    const finalVolumeValue = `-af 'volume=${volumeValue}'`
+    const decimalVolume = volumeValue / 100
+    const finalVolumeValue = `-af 'volume=${decimalVolume}'`
     return finalVolumeValue
   }
 }
@@ -57,9 +60,9 @@ export default ChangeVolumeFeature
 
 const ChangeVolumeUi = ({ parents }: { parents: Array<string> }) => {
   const ListElements = [
-    { name: '50%', value: 0.5 },
-    { name: '75%', value: 0.75 },
-    { name: '125%', value: 0.125 },
+    { name: '50%', value: 50 },
+    { name: '75%', value: 75 },
+    { name: '125%', value: 125 },
     {
       name: 'Custom',
       value: 1,
@@ -67,8 +70,8 @@ const ChangeVolumeUi = ({ parents }: { parents: Array<string> }) => {
         component: Slider,
         props: {
           parents,
-          min: 0.1,
-          max: 2,
+          min: 5,
+          max: 200,
           title: 'Custom Level'
         },
         paddingTop: 3
@@ -76,7 +79,7 @@ const ChangeVolumeUi = ({ parents }: { parents: Array<string> }) => {
     }
   ]
 
-  const current = { name: '75%', value: 0.75 }
+  const current = { name: '75%', value: 75 }
 
   const props = {
     parents,
