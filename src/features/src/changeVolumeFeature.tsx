@@ -1,3 +1,7 @@
+import React from 'react'
+import Slider from '../../clui-ui-components/Slider'
+import List from '../../clui-ui-components/List'
+
 import FFmpegFeature from '../FFmpegFeature'
 
 type ChangeVolumeConfig = {
@@ -50,3 +54,38 @@ class ChangeVolumeFeature extends FFmpegFeature {
 }
 
 export default ChangeVolumeFeature
+
+const ChangeVolumeUi = ({ parents }: { parents: Array<string> }) => {
+  const ListElements = [
+    { name: '50%', value: 0.5 },
+    { name: '75%', value: 0.75 },
+    { name: '125%', value: 0.125 },
+    {
+      name: 'Custom',
+      value: 1,
+      child: {
+        component: Slider,
+        props: {
+          parents,
+          min: 0.1,
+          max: 2,
+          title: 'Custom Level'
+        },
+        paddingTop: 3
+      }
+    }
+  ]
+
+  const current = { name: '75%', value: 0.75 }
+
+  const props = {
+    parents,
+    title: 'Volume Reduction Settings',
+    current,
+    list: ListElements
+  }
+
+  return <List {...props} />
+}
+
+export { ChangeVolumeUi }
