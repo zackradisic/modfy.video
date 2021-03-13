@@ -8,6 +8,7 @@ import PhotoMontageFeature, { PhotoMontageUi } from './src/photoMontage'
 import ConcatFeature, { ConcatUi } from './src/concatFeature'
 import AspectRatioFeature, { AspectRatioUi } from './src/aspectRatioFeature'
 import TrimFeature, { TrimUi } from './src/trimFeature'
+import SpeedFeature, { SpeedFeatureUi } from './src/speedFeature'
 
 // Custom Run Feature
 
@@ -31,6 +32,7 @@ export type Feature =
   | typeof RunFeature
   | typeof TrimFeature
   | typeof CombinedExecFeature
+  | typeof SpeedFeature
 
 export type FeatureElement = {
   name: string
@@ -82,6 +84,13 @@ const FEATURES: Features = {
     description: 'Change the aspect ratio for the video',
     feature: AspectRatioFeature,
     ui: <AspectRatioUi parents={['ASPECT_RATIO']} />
+  },
+
+  SPEED: {
+    name: 'Change Speed',
+    description: 'Change speed of the video',
+    feature: SpeedFeature,
+    ui: <SpeedFeatureUi />
   },
 
   CUSTOM_RUN: {
