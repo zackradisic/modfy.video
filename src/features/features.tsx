@@ -90,7 +90,7 @@ const FEATURES: Features = {
     name: 'Change-Volume',
     description: 'Change the volume for the video',
     feature: ChangeVolumeFeature,
-    ui: <ChangeVolumeUi parents={['CHANGE_VOLUME']} />
+    ui: <ChangeVolumeUi parents={['VOLUME']} />
   },
 
   CUSTOM_RUN: {

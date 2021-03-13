@@ -24,9 +24,8 @@ class ChangeVolumeFeature extends FFmpegFeature {
 
   parseConfiguration = () => {
     const { VOLUME } = this.configuration
-    const { VALUE } = this.configuration
-    console.warn('IMPORTANT!!!! ', VOLUME, 'rgt', VALUE)
-    return { volumeValue: VALUE }
+    const { value } = VOLUME
+    return { volumeValue: value }
   }
 
   setFFmpegCommands(command: string) {
